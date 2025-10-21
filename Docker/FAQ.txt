@@ -1,0 +1,11 @@
+镜像加速
+    修改/etc/docker/daemon.json
+        {
+            "registry-mirrors": ["https://docker.1panel.live"]
+        }
+
+    重启docker
+
+
+
+

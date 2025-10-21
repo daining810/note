@@ -1,0 +1,13 @@
+jps指令
+    显示java启动的进程
+
+    jps -l
+
+lsof指令
+    显示进程和端口号
+
+    lsof -i -P -n | grep java 
+
+grep指令
+    按正则表达式过滤
+        grep -E 'a|b|c'
