@@ -1,0 +1,54 @@
+是什么
+    管理Java项目依赖的工具
+
+    自动化构建测试打包和发布项目
+
+为什么
+    原来手工管理jar包的方式的缺点
+        jar包查找麻烦，来源不可靠
+        jar的依赖为树状非常繁琐，极有可能冲突
+        每个项目引入大量jar包占用磁盘空间
+
+    提供了一些指令在没有IDEA时构建应用
+
+Maven的工作过程和原理
+    pom
+    依赖
+    生命周期
+    插件
+
+基于Maven创建IDEA的工程
+    GAVP属性
+        G的格式：com.{公司}.业务.子业务，最多4级
+        A的格式：业务/产品名-模块名
+        V的格式：主-次-修订
+        P的值：jar默认值，war是Java的web工程，pom不打包，用来做继承的父工程
+
+    IDEA创建Maven工程后所有相关配置的作用
+    
+Maven项目的结构以及各个目录的作用
+
+构建过程和相关命令
+    clean 删除target目录
+
+依赖范围
+    编译环境：编译期间为字节码文件时是否可用
+    测试环境：测试期间...
+    运行环境：运行期间...
+
+    scope默认为compile，三种环境都能用，最常见
+    test 仅测试环境，如junit
+    provided 仅编译和测试环境使用，但不打包到运行环境，由运行环境自己提供，如servlet-api
+    runtime 测试环境和运行环境，如JDBC驱动有可能是该范围，因为是接口不涉及到具体的实现，只有在运行时才会用到
+    system 由本机系统提供，会导致可移植性降低，不推荐使用
+    import 只能与dependencyManagement元素配合使用，将目标pom.xml中的dependencyManagement导入并合并到当前pom.xml的dependencyManagement中
+
+jar包下载失败的处理方法
+    找打下载失败的jar包，删除后，重新下载
+
+
+
+
+
+
+
