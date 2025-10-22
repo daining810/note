@@ -37,18 +37,45 @@ Maven项目的结构以及各个目录的作用
     运行环境：运行期间...
 
     scope默认为compile，三种环境都能用，最常见
-    test 仅测试环境，如junit
-    provided 仅编译和测试环境使用，但不打包到运行环境，由运行环境自己提供，如servlet-api
-    runtime 测试环境和运行环境，如JDBC驱动有可能是该范围，因为是接口不涉及到具体的实现，只有在运行时才会用到
-    system 由本机系统提供，会导致可移植性降低，不推荐使用
-    import 只能与dependencyManagement元素配合使用，将目标pom.xml中的dependencyManagement导入并合并到当前pom.xml的dependencyManagement中
+        test 仅测试环境，如junit
+        provided 仅编译和测试环境使用，但不打包到运行环境，由运行环境自己提供，如servlet-api
+        runtime 测试环境和运行环境，如JDBC驱动有可能是该范围，因为是接口不涉及到具体的实现，只有在运行时才会用到
+        system 由本机系统提供，会导致可移植性降低，不推荐使用
+        import 只能与dependencyManagement元素配合使用，将目标pom.xml中的dependencyManagement导入并合并到当前pom.xml的dependencyManagement中
 
 jar包下载失败的处理方法
     找打下载失败的jar包，删除后，重新下载
 
+依赖的传递
+    作用是简化依赖过程和确保依赖的正确
 
+    a依赖b,b依赖c,a是否依赖c由b依赖c时的依赖范围以及配置决定
+        b依赖c时使用compile时,可以传递,使用test或provided时,不能传递
+              若使用了<optional>true</optional>标签也不会传递
 
+依赖的冲突
+    自动
+        短路优先(依赖层级小/短/近的原则)
 
+        路径相同,先声明的优先
+
+    手动  
+        使用依赖排除标签exclusions标签  
+    
+继承
+    继承的是配置信息,即实现共享配置信息的功能,在父项目中统一管理依赖
+
+    直接看maven_test中的maven_parent模块的pom和其子模块的pom中的配置即可
+
+聚合
+    聚合多个子项目方便管理
+    统一构建和发布一组相关的项目
+    优化构建顺序
+
+部署和使用私服Nexus
+    暂跳
+
+笔记相当详细,以后的工作中查漏补缺!
 
 
 
