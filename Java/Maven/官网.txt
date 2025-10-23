@@ -1,5 +1,40 @@
-Maven的3个生命周期
+配置
+    .mvn目录
+        位于项目根目录中,可包含maven.config,jvm.config,extensions.xml配置文件
+
+        .mvn/maven.config
+            放置mvn命令配置参数,这样就不用每次运行mvn命令时都要添加参数
+
+        .mvn/jvm.config
+            放置jvm参数,替代MAVEN_OPTS和.mvnrc配置
+
+        .mvn/extensions.xml
+            替代原始的将包含扩展的jar包放入${MAVEN_HOME}/lib/ext目录的方式,该方式不灵活,需要修改安装,而且每次新增或修改都要影响使用者
+            mvn -Dmaven.ext.class.path=extension.jar替换放jar包的方式,但是每次运行mvn都需要添加该参数,比较麻烦
+            现在的做法是使用.mvn/extensions.xml文件类似pom,在其中定义扩展jar包的gav,就像引入普通的依赖一样方便
+
+    环境变量
+        MAVEN_OPTS
+            配置mvn启动时的jvm参数
+
+        MAVEN_ARGS
+            配置Maven的CLI参数
+
+内置生命周期及其最常用的阶段
     清理 clean
-    部署 
-    生成站点
+    默认 validate compile test package verify install deploy 
+    站点 site site-deploy
+
+插件的目标
+    如mvn archetype:generate, mvn checkstyle:check
+
+settings.xml中的profile配置
+    定义不同的配置,然后在不同的环境下激活使用
+
+     
+
+        
+        
+
+        
 
